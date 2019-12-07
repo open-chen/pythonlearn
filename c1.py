@@ -79,7 +79,6 @@ def demo_list():
     print([0] * 15)
     lista.append(listb)
     print(lista)
-
 def add(a,b):
     return a+b
 def sub(a,b):

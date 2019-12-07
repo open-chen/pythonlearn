@@ -12,7 +12,7 @@
                     list.remove(i)
                     break
     return list'''
-def demo(list):
+'''def demo(list):
     dict = {}
     for i in list:
         if i['department_id'] not in dict:
@@ -22,8 +22,19 @@ def demo(list):
     new=[]
     for k,v in dict.items():
         new.append({"department_id": k,"value": v})
-    print(new)
-    
+    print(new)'''
+
+def demo(list):
+    dict = {}
+    for i in list[:]:
+        if i['department_id'] not in dict:
+            dict[i["department_id"]] = list.index(i)
+            i["value"] = [i["value"]]
+        else:
+            list[dict[i["department_id"]]]["value"].append(i["value"])
+            list.remove(i)
+    return list
+
 if __name__=="__main__":
     list1 = [
         {
@@ -31,7 +42,7 @@ if __name__=="__main__":
             "value": "张三"
         },
         {
-            "department_id": 1,
+            "department_id": 2,
             "value": "李四"
         },
         {
@@ -43,9 +54,9 @@ if __name__=="__main__":
             "value": "张六"
         }
     ]
-    # list3=demo(list1)
-    # print(list3)
-    demo(list1)
+    list3=demo(list1)
+    print(list3)
+    # demo(list1)
 
     list2 = [
         {
